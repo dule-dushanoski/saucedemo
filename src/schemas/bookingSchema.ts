@@ -1,3 +1,4 @@
+// Expected JSON structure (schema) for booking/auth API responses
 export const BOOKING_SCHEMA = {
   type: 'object',
   required: ['firstname', 'lastname', 'totalprice', 'depositpaid', 'bookingdates'],
@@ -36,6 +37,8 @@ export const AUTH_RESPONSE_SCHEMA = {
 };
 
 export function validateSchema(data: unknown, schema: Record<string, unknown>): { valid: boolean; errors: string[] } {
+  // Checks if a real response matches JSON structure. This ensures the API returns the right fields and types.
+  // (e.g., firstname must be a string, totalprice a number).
   const errors: string[] = [];
 
   if (typeof data !== 'object' || data === null) {

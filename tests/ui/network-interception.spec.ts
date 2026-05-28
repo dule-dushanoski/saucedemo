@@ -2,6 +2,7 @@ import { test, expect } from '../../src/fixtures/testFixture';
 import { STANDARD_USER } from '../../src/types/user';
 
 test.describe('Network Interception', () => {
+  // Listens for all HTTP responses during login and records the URLs for validation.
   test('should intercept and validate product page API responses', async ({ page }) => {
     const responses: string[] = [];
     page.on('response', (response) => {
@@ -20,6 +21,8 @@ test.describe('Network Interception', () => {
   });
 
   test('should block images to test resilience', async ({ page }) => {
+    // Aborts all image requests (png, jpg, etc.) to verify the page still works.
+    // (Tests resilience under resource failure).
     await page.route('**/*.{png,jpg,jpeg,webp}', (route) => route.abort());
 
     await page.goto('/');
@@ -34,6 +37,8 @@ test.describe('Network Interception', () => {
   });
 
   test('should mock product price via API interception', async ({ page }) => {
+    // Intercepts the inventory.html response and replaces $29.99 with $9.99
+    // before the page renders, then asserts the modified price is shown.
     await page.route('**/inventory.html', async (route) => {
       const response = await route.fetch();
       let body = await response.text();
