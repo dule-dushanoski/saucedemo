@@ -1,4 +1,4 @@
-# QA Automation Assessment
+# QA Automation Saucedemo
 
 Playwright + TypeScript test automation framework for UI ([SauceDemo](https://www.saucedemo.com/)) and API ([Restful-Booker](https://restful-booker.herokuapp.com/)) testing.
 
