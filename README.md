@@ -1,3 +1,5 @@
+![example workflow](https://github.com/dule-dushanoski/saucedemo/actions/workflows/ci.yml/badge.svg)
+
 # QA Automation Saucedemo
 
 Playwright + TypeScript test automation framework for UI ([SauceDemo](https://www.saucedemo.com/)) and API ([Restful-Booker](https://restful-booker.herokuapp.com/)) testing.
